@@ -7,6 +7,7 @@ import { Editor } from "./editor/Editor";
 import Loader from "./Loader";
 import { useEffect, useRef, useState } from "react";
 import { updateDocument } from "@/lib/actions/room.actions";
+import ActiveCollaborators from "./ActiveCollaborators";
 
 const CollaborativeRoom = ({
   roomId,
@@ -78,12 +79,15 @@ const CollaborativeRoom = ({
             >
               <p className="document-title">Share</p>
             </div>
-            <SignedOut>
-              <SignInButton />
-            </SignedOut>
-            <SignedIn>
-              <UserButton />
-            </SignedIn>
+            <div className="flex w-full flex-1 justify-end gap-2 sm:gap-3">
+              <ActiveCollaborators />
+              <SignedOut>
+                <SignInButton />
+              </SignedOut>
+              <SignedIn>
+                <UserButton />
+              </SignedIn>
+            </div>
           </Header>
           <Editor />
         </div>
