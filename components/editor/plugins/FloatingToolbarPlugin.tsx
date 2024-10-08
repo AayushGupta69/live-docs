@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   autoUpdate,
   flip,
@@ -84,7 +86,7 @@ function Toolbar({
       shift({ padding, limiter: limitShift() }),
       size({ padding }),
     ],
-    whileElementsMounted: (...args) => {
+    whileElementsMounted: (...args: any) => {
       return autoUpdate(...args, {
         animationFrame: true,
       });

@@ -14,10 +14,19 @@ importers:
       '@clerk/themes':
         specifier: ^2.1.35
         version: 2.1.35
+      '@floating-ui/react-dom':
+        specifier: ^2.1.2
+        version: 2.1.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@lexical/react':
         specifier: ^0.18.0
         version: 0.18.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(yjs@13.6.19)
       '@lexical/rich-text':
+        specifier: ^0.18.0
+        version: 0.18.0
+      '@lexical/selection':
+        specifier: ^0.18.0
+        version: 0.18.0
+      '@lexical/utils':
         specifier: ^0.18.0
         version: 0.18.0
       '@liveblocks/client':
