@@ -8,6 +8,8 @@ import Loader from "./Loader";
 import { useEffect, useRef, useState } from "react";
 import { updateDocument } from "@/lib/actions/room.actions";
 import ActiveCollaborators from "./ActiveCollaborators";
+import { Input } from "./ui/input";
+import Image from "next/image";
 
 const CollaborativeRoom = ({
   roomId,
@@ -77,7 +79,39 @@ const CollaborativeRoom = ({
               ref={containerRef}
               className="flex w-fit items-center justify-center gap-2"
             >
-              <p className="document-title">Share</p>
+              {editing && !loading ? (
+                <Input
+                  type="text"
+                  value={documentTitle}
+                  ref={inputRef}
+                  placeholder="Enter title"
+                  onChange={(e) => setDocumentTitle(e.target.value)}
+                  onKeyDown={updateTitleHandler}
+                  disable={!editing}
+                  className="document-title-input"
+                />
+              ) : (
+                <>
+                  <p className="document-title">{documentTitle}</p>
+                </>
+              )}
+
+              {currentUserType === "editor" && !editing && (
+                <Image
+                  src="/assets/icons/edit.svg"
+                  alt="edit"
+                  width={24}
+                  height={24}
+                  onClick={() => setEditing(true)}
+                  className="pointer"
+                />
+              )}
+
+              {currentUserType !== "editor" && !editing && (
+                <p className="view-only-tag">View only</p>
+              )}
+
+              {loading && <p className="text-sm text-gray-400">saving...</p>}
             </div>
             <div className="flex w-full flex-1 justify-end gap-2 sm:gap-3">
               <ActiveCollaborators />
